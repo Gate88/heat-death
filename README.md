@@ -1,5 +1,5 @@
 # heat-death
-A pico-8 twin stick shooter. A compiled, playable version exists on https://gate.itch.io/heat-death
+A Robotron-inspired twin stick shooter game made in PICO-8. A compiled, playable version exists on https://gate.itch.io/heat-death
 
 ## Compiling
 To compile for the HTML target, navigate to the /src folder in PICO-8 and run the following command:
@@ -8,7 +8,7 @@ To compile for the HTML target, navigate to the /src folder in PICO-8 and run th
 export -f heat_death.html heat_death_game.p8 heat_death_tutorial.p8 heat_death_menu.p8
 ```
 
-The game can be compiled for other targets, but will lack dual-stick controller support.
+The game can be compiled for other PICO-8 targets, but will lack dual-stick controller support.
 
 ### Dual-stick and remappable controller support
 
