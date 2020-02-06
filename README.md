@@ -1,5 +1,5 @@
 # heat-death
-A Robotron-inspired twin stick shooter game made in PICO-8. A compiled, playable version exists on https://gate.itch.io/heat-death
+A Robotron-inspired twin stick shooter game made in PICO-8. A compiled, playable version exists on https://gate.itch.io/heat-death.
 
 ## Compiling
 To compile for the HTML target, navigate to the /src folder in PICO-8 and run the following command:
@@ -38,4 +38,4 @@ To release this game on the PICO-8 BBS (https://www.lexaloffle.com/bbs/), all "l
 ## JS File License
 The files in the js folder ("nfig.js" and "nfig_dualstick.js") are offered under the "unlicense" within that folder.
 
-They are heavily modified versions of the files in this repo: https://github.com/codl/pico-nfig . My modifications to "nfig.js" were to make it work correctly with PICO-8 v0.1.12c and correct styling issues I saw Chrome for the HTML exporter in that version. "nfig_dualstick.js" is further modified to provide dual stick support. I offer no guarentee that these modifications will work correctly with your game, especially if you're exporting with an earlier or later version of PICO-8.
+They are heavily modified versions of the files in this repo: https://github.com/codl/pico-nfig. My modifications to "nfig.js" were to make it work correctly with PICO-8 v0.1.12c and correct styling issues I saw Chrome for the HTML exporter in that version. "nfig_dualstick.js" is further modified to provide dual stick support. I offer no guarentee that these modifications will work correctly with your game, especially if you're exporting with an earlier or later version of PICO-8.
