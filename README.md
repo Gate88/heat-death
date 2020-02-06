@@ -5,7 +5,7 @@ A pico-8 twin stick shooter. A compiled, playable version exists on https://gate
 To compile for HTML, navigate to the /src folder in PICO-8 and run the following command:
 
 ```
-export -f heat_death.html heat_death_game.p8 heat_death_menu.p8
+export -f heat_death.html heat_death_game.p8 heat_death_tutorial.p8 heat_death_menu.p8
 ```
 
 ### Dual-stick and remappable controller support
@@ -21,7 +21,7 @@ To add remappable controller support and dual stick support to the game, after e
     src="nfig_dualstick.js"></script>
 ```
 
-This script works by hijacking PICO-8's normal input events and handling them in JS. By default, each stick on each controller is mapped to the following players' directional controls in PICO-8 seen in the table below. Thus, the dual stick controls only support 4 players max, since player 1 uses player 5's directional controls, etc.
+This script works by hijacking PICO-8's normal input events and handling them in JS. By default, each stick on each controller is mapped to the following players' directional controls in PICO-8 seen in the table below. Thus, the dual stick controls only support 4 players max, since controller 1 uses player index 0's directional controls for the left stick, and player index 5's directional controls for the right stick.
 
 |Controller Port|Left Stick Input Index|Right Stick Input Index|
 |---:|---:|---:|
@@ -33,7 +33,7 @@ This script works by hijacking PICO-8's normal input events and handling them in
 ### Additional modifications for BBS release
 To release this game on the PICO-8 BBS (https://www.lexaloffle.com/bbs/), all "load()" commands must be updated in each of .p8 files to point at the IDs used on the BBS. Instead of a filename, they will be formatted `#like_this`, where "like_this" is the ID of the cart you wish to load.
 
-##JS File Liscense
+## JS File Liscense
 The files in the js folder ("nfig.js" and "nfig_dualstick.js") are offered under the "unlicense" within that folder.
 
 They are heavily modified versions of the files in from repo: https://github.com/codl/pico-nfig . My modifications to "nfig.js" were to make it work correctly with PICO-8 v0.1.12c and correct styling issues I saw Chrome for the exporter for that version. "nfig_dualstick.js" is further modified to provide dual stick support. I offer no guarentee that these modifications will work correctly with your game, especially if you're exporting with an earlier or later version of PICO-8.
