@@ -844,7 +844,7 @@ function c_circle(x,y,r,mr,vr,c)
 end
 
 local default_player = to_table(
-[[x|:64,y|:64,vx|:0,vy|:0,mv|:.6,last_shot|:0,bcd|:4,face|:0.25,
+[[x|:64,y|:64,vx|:0,vy|:0,mv|:0.5,last_shot|:0,bcd|:7,face|:0.25,
  size|:5,shoot_extra|:0,slime_count|:0,slime_slow|:.017,value|:1,
  power|:2,n_bul|:1,invisible|:0,invincible|:90,charge|:0,pixels|:0,chain|:0,
 ]])
@@ -904,15 +904,15 @@ default_enemy = to_table([[
   chase|:false,]])
 --variation, rv, vgm, health, value
 enemy_variation = to_table([[
- 0:{false, 0.3, 1.3, 2, 1,},
- 4:{3, 0.3, 1.3, 2, 1,},
- 8:{2, 0.05, 2, 2, 1,},
- 10:{1, 0.1, 2, 4, 2,},]])
+ 0:{false, 0.2, 1.5, 2, 1,},
+ 4:{3, 0.2, 1.5, 2, 1,},
+ 8:{2, 0.05, 3, 2, 1,},
+ 10:{1, 0.1, 3, 4, 2,},]])
 function c_enemy(value)
  local variation, rv, vgm, health, val = unpack(enemy_variation[lvl_type] or enemy_variation[0],5)
  value = value or val
  if (value <= 0 and level < 10) health /= 2
- local mv, a = 0.15+rnd(rv), round(rnd(1),8)
+ local mv, a = 0.05+rnd(rv), round(rnd(1),8)
  return merge_into({
    list = enemies,
    value = value,
@@ -930,19 +930,19 @@ function c_enemy(value)
   },default_enemy)
 end
 
-default_puller = to_table("pv|:0.013,size|:5,health|:3,")
+default_puller = to_table("pv|:0.01,size|:5,health|:3,")
 function c_puller(value)
  return merge_into({
    list = pullers,
    value = value or 0.5,
-   mv = 0.2+rnd(0.1),
+   mv = 0.1+rnd(0.1),
    collision = c_3x3,
    draw = draw_puller,
   },default_puller)
 end
 
 default_chaser = to_table([[
- ta|:0,tdd|:8,mv|:1,dv|:0.03,bd|:0,be|:0.1,size|:5,
+ ta|:0,tdd|:8,mv|:0.75,dv|:0.03,bd|:0,be|:0.1,size|:5,
  health|:1,real|:true,]])
 function c_chaser(value)
  return merge_into({
@@ -953,7 +953,7 @@ function c_chaser(value)
   td = 50-rnd(25), --target distance from player
   last_shoot = 30+rnd(240),
   bv = 0.5+rnd(0.5),
-  scd = 120+rnd(80),
+  scd = 120+rnd(120),
   collision = c_3x3,
   draw = draw_chaser,
  },default_chaser)
@@ -989,12 +989,12 @@ end
 default_turrets = to_table(
 [[
  0:{last_shoot|:60,last_create|:10,size|:8,bd|:0,be|:0.5,
-  no_push|:true,scd|:90,sdur|:15,bv|:2,ccd|:75,shoot_at_player|:1,
+  no_push|:true,scd|:180,sdur|:12,bv|:2,ccd|:90,shoot_at_player|:1,
  },
- 6:{last_shoot|:10,scd|:15,sdur|:0,bv|:0.4,be|:0.1,
+ 6:{last_shoot|:10,scd|:15,sdur|:0,bv|:0.2,be|:0.1,
   ccd|:300,shoot_at_player|:0,
  },
- 10:{last_shoot|:10,scd|:5,sdur|:0,bv|:0.3,ccd|:600,be|:0.1,
+ 10:{last_shoot|:10,scd|:5,sdur|:0,bv|:0.2,ccd|:600,be|:0.1,
   bv|:0.5,shoot_at_player|:0,random_shot|:true,
  },
 ]])
@@ -1014,8 +1014,8 @@ end
 --   enemies, pullers, turrets,  bouncers,  chasers,
 enemy_table = to_table(
 [[
- 1: { {1,},   {1,-8,}, {0,},       {0,},       {0.5,-3,},},
- 2: { {0.05,},{0,},    {0,},       {0,-7,.15,},{0,-4,1.5,},},
+ 1: { {1,},   {1,-3,}, {0,},       {0,},       {0.5,-1,},},
+ 2: { {0.05,},{0,},    {0,},       {0,-1,.15,},{0,-4,1.5,},},
  3: { {.166,},{0,},    {0,1,.15,}, {0,},       {1,},},
  4: { {.8,},  {0.5,},  {0,},       {0,-1,.1,}, {0.2,-1,},},
  5: { {0.2,}, {1.5,15,},{0,},      {0,},       {0.3,},},
@@ -1047,7 +1047,7 @@ function c_spawners(regular_spawn,sc)
   p.invincible = 90
  end
  local level, spawns, scale = level, {}, level
- scale = scale/(scale+20)*25*(1+flr(scale/10)*0.1)*(0.9+#players*0.1)+8
+ scale = scale/(scale+20)*25*(1+flr(scale/10)*0.1)*(0.9+#players*0.1)+4
  if regular_spawn then
   n_e, n_p, n_t, n_b, n_c = e_nums({8+scale*4, (scale)*0.75, 0, 0, scale > 2 and 1+scale*0.5 or 0},scale)
  end
